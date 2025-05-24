@@ -23,7 +23,7 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
-          repository: MetaCubeX/meta-rule-dat
+          repository: MetaCubeX/meta-rules-dat
           ref: meta
           path: source-repo
 
