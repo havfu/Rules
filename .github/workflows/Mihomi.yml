@@ -35,7 +35,7 @@ jobs:
        run: |
             mkdir -p ./target-repo
             cp -r ./source-repo/geo/geosite/cn.list ./target-repo
-          	
+            cp -r ./source-repo/geo/geosite/geolocation-!cn.list ./target-repo
        working-directory: .
 
      - name: SSH connection to Actions
