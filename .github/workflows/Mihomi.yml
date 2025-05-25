@@ -34,6 +34,7 @@ jobs:
 
      - name: Sync repository
        run: |
+            rm -rf ./target-repo
             mkdir -p ./target-repo
             cp -r ./source-repo/geo/geosite/cn.list ./target-repo
             cp -r ./source-repo/geo/geosite/geolocation-!cn.list ./target-repo
