@@ -69,6 +69,8 @@ jobs:
       #     path: target-repo
 
 
+      - name: Checkout 
+        uses: actions/checkout@main
 
       - name: Sync repository
 
