@@ -41,8 +41,16 @@ jobs:
         wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.9/mihomo-linux-amd64-v1.19.9.gz -O /usr/local/bin/mihomo.gz
         gunzip /usr/local/bin/mihomo.gz
         chmod +x /usr/local/bin/mihomo
-        rm -rf ./target-repo
-        mkdir -p ./target-repo
+        git config --local user.name "github-actions[bot]"
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+        cd target-repo
+        rm -rf *
+        git add .
+        git commit -m "forDelete"
+        git push
+        
+        cd ..
         cp -r ./source-repo/geo/geosite/cn.list ./target-repo
         cp -r ./source-repo/geo/geosite/geolocation-\!cn.list ./target-repo
         cd ./target-repo/
@@ -51,10 +59,10 @@ jobs:
         sed -i '/ipleak/d' geolocation-\!cn.list
         /usr/local/bin/mihomo convert-ruleset domain text cn.list cn.mrs
         /usr/local/bin/mihomo convert-ruleset domain text  geolocation-\!cn.list  geolocation-\!cn.mrs
+        git commit -m "new"
+        git push
 
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
+          
           
           
      - name: SSH connection to Actions
