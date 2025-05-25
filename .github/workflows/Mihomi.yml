@@ -22,41 +22,41 @@ jobs:
     steps:
 
      - name: Checkout
-        uses: actions/checkout@main
+       uses: actions/checkout@main
 
-      - name: Checkout source repository
-        uses: actions/checkout@v2
-        with:
+     - name: Checkout source repository
+       uses: actions/checkout@v2
+       with:
           repository: MetaCubeX/meta-rules-dat
           ref: meta
           path: source-repo
 
-      - name: Sync repository
-        run: |
+     - name: Sync repository
+       run: |
           mkdir -p ./target-repo
           cp -r ./source-repo/geo/geosite/cn.list ./target-repo
           	
-        working-directory: .
+          working-directory: .
 
-      - name: SSH connection to Actions
-        uses: P3TERX/ssh2actions@v1.0.0
-        if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-        env:
+     - name: SSH connection to Actions
+       uses: P3TERX/ssh2actions@v1.0.0
+       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+       env:
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
   
-      - name: Git push assets to "release" branch
-        run: |
-                     wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.9/mihomo-linux-amd64-v1.19.9.gz -O /usr/local/bin/mihomo.gz
-          gunzip /usr/local/bin/mihomo.gz
-          chmod +x /usr/local/bin/mihomo
-          cd ./target-repo/ || exit 1
-          sed -i '/browserleak/d' cn.list
-          sed -i '/browserleak/d' geolocation-\!cn.list
-          sed -i '/ipleak/d' geolocation-\!cn.list
-          /usr/local/bin/mihomo convert-ruleset domain text cn.list cn.mrs
-          /usr/local/bin/mihomo convert-ruleset domain text  geolocation-\!cn.list  geolocation-\!cn.mrs
+     - name: Git push assets to "release" branch
+       run: |
+        wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.9/mihomo-linux-amd64-v1.19.9.gz -O /usr/local/bin/mihomo.gz
+        gunzip /usr/local/bin/mihomo.gz
+        chmod +x /usr/local/bin/mihomo
+        cd ./target-repo/ || exit 1
+        sed -i '/browserleak/d' cn.list
+        sed -i '/browserleak/d' geolocation-\!cn.list
+        sed -i '/ipleak/d' geolocation-\!cn.list
+        /usr/local/bin/mihomo convert-ruleset domain text cn.list cn.mrs
+        /usr/local/bin/mihomo convert-ruleset domain text  geolocation-\!cn.list  geolocation-\!cn.mrs
 
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
