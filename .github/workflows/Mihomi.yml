@@ -32,22 +32,19 @@ jobs:
           ref: meta
           path: source-repo
 
-     - name: Sync repository
-       run: |
-            rm -rf ./target-repo
-            mkdir -p ./target-repo
-            cp -r ./source-repo/geo/geosite/cn.list ./target-repo
-            cp -r ./source-repo/geo/geosite/geolocation-!cn.list ./target-repo
-       working-directory: .
-
 
 
   
      - name: Git push assets to "release" branch
        run: |
+       
         wget https://github.com/MetaCubeX/mihomo/releases/download/v1.19.9/mihomo-linux-amd64-v1.19.9.gz -O /usr/local/bin/mihomo.gz
         gunzip /usr/local/bin/mihomo.gz
         chmod +x /usr/local/bin/mihomo
+        rm -rf ./target-repo
+        mkdir -p ./target-repo
+        cp -r ./source-repo/geo/geosite/cn.list ./target-repo
+        cp -r ./source-repo/geo/geosite/geolocation-!cn.list ./target-repo
         cd ./target-repo/ || exit 1
         sed -i '/browserleak/d' cn.list
         sed -i '/browserleak/d' geolocation-\!cn.list
