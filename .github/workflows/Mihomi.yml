@@ -44,7 +44,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-        cd target-repo
+        cd ./target-repo/
         rm -rf *
         git add .
         git commit -m "forDelete"
