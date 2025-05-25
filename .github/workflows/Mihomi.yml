@@ -44,7 +44,18 @@ jobs:
         rm -rf ./target-repo
         mkdir -p ./target-repo
         cp -r ./source-repo/geo/geosite/cn.list ./target-repo
+        cp -r ./source-repo/geo/geosite/geolocation-\!cn.list ./target-repo
+        cd ./target-repo/
+        sed -i '/browserleak/d' cn.list
+        sed -i '/browserleak/d' geolocation-\!cn.list
+        sed -i '/ipleak/d' geolocation-\!cn.list
+        /usr/local/bin/mihomo convert-ruleset domain text cn.list cn.mrs
+        /usr/local/bin/mihomo convert-ruleset domain text  geolocation-\!cn.list  geolocation-\!cn.mrs
 
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          
           
      - name: SSH connection to Actions
        uses: P3TERX/ssh2actions@v1.0.0
