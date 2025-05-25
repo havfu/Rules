@@ -48,7 +48,20 @@ jobs:
         rm -rf *
         git add .
         git commit -m "forDelete"
+        git push
         
+        cd ..
+        cp -r ./source-repo/geo/geosite/cn.list ./target-repo
+        cp -r ./source-repo/geo/geosite/geolocation-\!cn.list ./target-repo
+        cd ./target-repo/
+        sed -i '/browserleak/d' cn.list
+        sed -i '/browserleak/d' geolocation-\!cn.list
+        sed -i '/ipleak/d' geolocation-\!cn.list
+        /usr/local/bin/mihomo convert-ruleset domain text cn.list cn.mrs
+        /usr/local/bin/mihomo convert-ruleset domain text  geolocation-\!cn.list  geolocation-\!cn.mrs
+        git add .
+        git commit -m "new"
+        git push
 
           
           
