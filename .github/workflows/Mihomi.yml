@@ -51,6 +51,7 @@ jobs:
         git push
         
         cd ..
+        mkdir target-repo
         cp -r ./source-repo/geo/geosite/cn.list ./target-repo
         cp -r ./source-repo/geo/geosite/geolocation-\!cn.list ./target-repo
         cd ./target-repo/
