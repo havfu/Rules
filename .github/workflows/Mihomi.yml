@@ -33,10 +33,10 @@ jobs:
 
      - name: Sync repository
        run: |
-          mkdir -p ./target-repo
-          cp -r ./source-repo/geo/geosite/cn.list ./target-repo
+            mkdir -p ./target-repo
+            cp -r ./source-repo/geo/geosite/cn.list ./target-repo
           	
-          working-directory: .
+       working-directory: .
 
      - name: SSH connection to Actions
        uses: P3TERX/ssh2actions@v1.0.0
