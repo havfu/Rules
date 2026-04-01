@@ -43,7 +43,6 @@ jobs:
         chmod +x /usr/local/bin/mihomo
         git config --local user.name "github-actions[bot]"
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
         cd ./target-repo/
         rm -rf *
         git add .
@@ -62,7 +61,6 @@ jobs:
         git add .
         git commit -m "new"
         git push
-
           
      - name: Delete workflow runs
        uses: Mattraks/delete-workflow-runs@main
