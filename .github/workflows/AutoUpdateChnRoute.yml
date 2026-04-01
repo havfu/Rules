@@ -75,10 +75,7 @@ jobs:
       #     git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
       #     git checkout -b acl4ssr
       #     git add .
-
-          git commit -m "Sync ACL4SSR/Clash/Providers to jankiny/ClashRules/acl4ssr"
-
-          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
-
-          git push -f origin acl4ssr
+      #  git commit -m "Sync ACL4SSR/Clash/Providers to jankiny/ClashRules/acl4ssr"
+      #  git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}"
+      #   git push -f origin acl4ssr
 
