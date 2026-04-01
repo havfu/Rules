@@ -32,8 +32,8 @@ jobs:
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
-          repository: MetaCubeX/meta-rules-dat
-          ref: meta
+          repository: felixonmars/dnsmasq-china-list
+          ref: master
           path: source-repo
 
 
@@ -50,8 +50,7 @@ jobs:
       - name: Sync repository
         run: |
           mkdir -p ./target-repo
-          cp -r ./source-repo/geo/geosite/cn.list ./target-repo
-          cp -r ./source-repo/geo/geosite/geolocation-!cn.list ./target-repo
+          cp -r ./source-repo/ ./target-repo
         working-directory: .
 
 
