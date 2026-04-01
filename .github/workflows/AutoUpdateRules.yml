@@ -1,4 +1,4 @@
-name : AutoSync
+name : AutoUpdateRules
 
 on:
   workflow_dispatch:
