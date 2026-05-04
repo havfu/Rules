@@ -33,8 +33,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: '21'
-          distribution: 'temurin' # Options include: temurin, zulu, microsoft, corretto, oracle
-          cache: 'maven'         # Optional: caches dependencies for faster builds
+
           
       - name: Checkout source repository
         uses: actions/checkout@v2
