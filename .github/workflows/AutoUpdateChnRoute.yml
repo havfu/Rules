@@ -28,7 +28,14 @@ jobs:
 
       - name: Checkout 
         uses: actions/checkout@main
-      
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin' # Options include: temurin, zulu, microsoft, corretto, oracle
+          cache: 'maven'         # Optional: caches dependencies for faster builds
+          
       - name: Checkout source repository
         uses: actions/checkout@v2
         with:
